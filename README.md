@@ -2,7 +2,9 @@
 
 ## Scaling Coffee with Goroutines
 
-Build a small web app that serves coffees during the workshop held by Sadie Freeman @sadief.
+A RESTful API to serves coffees, powered by goroutines.
+
+This project was done during GopherCON UK 2023, during Sadie's Freeman (@sadief) workshop.
 
 ### Requirements
 

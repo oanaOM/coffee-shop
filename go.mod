@@ -1,3 +1,3 @@
 module coffee-shop
 
-go 1.23
+go 1.21.0

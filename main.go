@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"log"
 	"net/http"
 	"strconv"
@@ -8,6 +9,12 @@ import (
 	"sync"
 	"time"
 )
+
+// Result defines the data restructure of the result
+type Result struct {
+	TimeTaken      time.Duration `json:"TimeTaken"`
+	NumberOfCoffee int           `json:"NumberOfCoffee"`
+}
 
 func main() {
 	portNo := ":8080"
@@ -41,6 +48,11 @@ func ServeCoffee(w http.ResponseWriter, r *http.Request) {
 	wg.Wait()
 
 	timeTaken := time.Since(start)
+	response := Result{
+		TimeTaken:      timeTaken,
+		NumberOfCoffee: count,
+	}
+	json.NewEncoder(w).Encode(response)
 	log.Printf("Took %s to serve coffee, customer no: %v", timeTaken, count)
 }
 
